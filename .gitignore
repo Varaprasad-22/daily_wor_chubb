@@ -1,5 +1,22 @@
+# Eclipse metadata
 .metadata/
+.classpath
+.project
+.settings/
+
+# Build output
+bin/
+build/
+out/
+target/
+
+# Compiled files
 *.class
+
+# Packages
 *.jar
 *.war
 *.ear
+
+# Logs
+*.log
