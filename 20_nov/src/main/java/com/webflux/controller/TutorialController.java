@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webflux.model.Tutorial;
@@ -16,6 +17,7 @@ import com.webflux.service.TutorialService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api/tutorial")
@@ -31,6 +33,7 @@ public class TutorialController {
     }
 	
 	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
 	public Mono<Tutorial> createTutorial(@RequestBody Tutorial tutorial){
 		return tutorialService.createTutorial(tutorial);
 	}
@@ -50,6 +53,7 @@ public class TutorialController {
 		return tutorialService.update(id, tutorial);
 	}
 	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public Mono<Void> deleteById(@PathVariable Integer id){
 		return tutorialService.deleteById(id);
 	}
